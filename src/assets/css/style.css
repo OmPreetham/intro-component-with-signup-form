@@ -115,7 +115,7 @@ html {
 }
 
 body {
-  max-width: 1500px;
+  max-width: 1440px;
   min-width: 375px;
   margin-inline: auto;
   min-height: 100vh;
@@ -131,7 +131,6 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-
   justify-content: center;
 
   gap: 1rem;
@@ -306,7 +305,7 @@ button:focus {
   text-decoration: none;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
   .layout-wrapper {
     text-align: center;
 
