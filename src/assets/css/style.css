@@ -263,7 +263,6 @@ input:active {
 } */
 
 input::placeholder {
-  text-indent: 20%;
   font-size: 0.9rem;
   font-weight: var(--fw-600);
   color: var(--neutral-dark-blue);
