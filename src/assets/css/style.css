@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  /* Colors */
+
+  /* Primary */
+
+  --primary-red: hsl(0, 100%, 74%);
+  --primary-green: hsl(154, 59%, 51%);
+  --primary-light-green: hsla(154, 59%, 51%, 0.522);
+  --primary-dark-green: hsl(153, 45%, 49%);
+  --primary-shadow-black: hsla(0, 0%, 0%, 0.12);
+  --primary-light-gray: hsla(240, 17%, 28%, 0.317);
+  --primary-white: hsl(0, 0%, 100%);
+  --primary-light-white: hsla(0, 0%, 100%, 0.789);
+
+  /* Accent */
+
+  --accent-blue: hsl(248, 32%, 49%);
+  --accent-red: hsl(0, 72%, 45%);
+
+  /* Neutral */
+
+  --neutral-dark-blue: hsl(249, 10%, 26%);
+  --neutral-grayish-blue: hsl(246, 25%, 77%);
+
+  /* Typography */
+
+  /* Font Size */
+
+  --fs-root: 16px;
+
+  /* Font Family */
+
+  --ff: 'Poppins', sans-serif;
+
+  /* Font Weights */
+
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+}
+
+/* CSS Resets */
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  5. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  6. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+  7. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/*
+  8. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* General Syling */
+
+html {
+  font-family: var(--ff);
+  color: var(--primary-white);
+}
+
+body {
+  max-width: 1500px;
+  min-width: 375px;
+  margin-inline: auto;
+  min-height: 100vh;
+
+  background-color: var(--primary-red);
+  background-image: url(/images/bg-intro-desktop.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.layout-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 1rem;
+
+  min-height: 100vh;
+
+  max-width: 75%;
+
+  margin-inline: auto;
+}
+
+.left-wrapper,
+.right-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.5rem;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+.left-wrapper p {
+  line-height: 1.6;
+  color: var(--primary-light-white);
+}
+
+.banner-wrapper {
+  padding-block: 1.1em;
+
+  text-align: center;
+
+  border-radius: 10px;
+
+  background-color: var(--accent-blue);
+  width: 100%;
+}
+
+.banner-wrapper p {
+  color: var(--primary-light-white);
+  font-size: 0.95rem;
+}
+
+.banner-wrapper p span {
+  color: var(--primary-white);
+  font-weight: var(--fw-600);
+}
+
+.banner-wrapper,
+.form-wrapper {
+  box-shadow: 0 8px var(--primary-shadow-black);
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  background-color: var(--primary-white);
+
+  border-radius: 10px;
+
+  padding: 2.5em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.2rem;
+
+  position: relative;
+}
+
+label {
+  display: none;
+}
+
+form * {
+  border-radius: 5px;
+}
+
+input {
+  border: 1px solid var(--primary-shadow-black);
+
+  padding: 1em;
+  padding-left: 7%;
+
+  font-weight: var(--fw-600);
+  color: var(--neutral-dark-blue);
+}
+
+input:focus,
+input:active {
+  border: none;
+  outline: 2px solid var(--accent-blue);
+}
+
+/* Error Styles */
+
+/* .error {
+  outline: 2px solid var(--accent-red);
+  color: var(--accent-red);
+}
+
+.error-icon1,
+.error-icon2,
+.error-icon3,
+.error-icon4 {
+  width: 5%;
+
+  position: absolute;
+  right: 5%;
+}
+
+.error-icon1 {
+  top: 5%;
+}
+.error-icon2 {
+  top: 26%;
+}
+.error-icon3 {
+  top: 47%;
+}
+.error-icon4 {
+  top: 68%;
+} */
+
+input::placeholder {
+  text-indent: 20%;
+  font-size: 0.9rem;
+  font-weight: var(--fw-600);
+  color: var(--neutral-dark-blue);
+}
+
+button {
+  background-color: var(--primary-green);
+
+  color: var(--primary-white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  font-weight: var(--fw-500);
+  line-height: 1;
+
+  padding: 1em;
+  padding-top: 1.4em;
+
+  border: 1px solid var(--primary-dark-green);
+  border-bottom: 4px solid var(--primary-dark-green);
+
+  cursor: pointer;
+}
+
+button:active,
+button:focus {
+  background-color: var(--primary-light-green);
+
+  border: 0;
+  border-bottom: 4px solid var(--primary-green);
+}
+.form-wrapper p {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: var(--fw-500);
+  color: var(--primary-light-gray);
+}
+.form-wrapper p a {
+  color: var(--primary-red);
+  font-weight: var(--fw-700);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 700px) {
+  .layout-wrapper {
+    text-align: center;
+
+    grid-template-columns: 1fr;
+
+    margin-block: 4rem;
+
+    gap: 4rem;
+  }
+
+  .form-wrapper {
+    padding: 2em;
+  }
+}
