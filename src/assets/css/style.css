@@ -131,13 +131,12 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  justify-content: center;
 
   gap: 1rem;
 
   min-height: 100vh;
 
-  max-width: 75%;
+  max-width: 1150px;
 
   margin-inline: auto;
 }
@@ -146,6 +145,8 @@ body {
 .right-wrapper {
   display: flex;
   flex-direction: column;
+
+  margin-inline: 1rem;
 
   gap: 1.5rem;
 }
@@ -203,8 +204,6 @@ form {
   flex-direction: column;
 
   gap: 1.2rem;
-
-  position: relative;
 }
 
 label {
@@ -215,11 +214,17 @@ form * {
   border-radius: 5px;
 }
 
+form div {
+  position: relative;
+}
+
 input {
   border: 1px solid var(--primary-shadow-black);
 
   padding: 1em;
   padding-left: 7%;
+
+  width: 100%;
 
   font-weight: var(--fw-600);
   color: var(--neutral-dark-blue);
@@ -233,7 +238,11 @@ input:active {
 
 /* Error Styles */
 
-/* .error {
+.error-email {
+  color: var(--accent-red);
+}
+
+.error {
   outline: 2px solid var(--accent-red);
   color: var(--accent-red);
 }
@@ -245,21 +254,16 @@ input:active {
   width: 5%;
 
   position: absolute;
-  right: 5%;
+  right: 25px;
+  top: 16px;
 }
 
-.error-icon1 {
-  top: 5%;
+form div p {
+  text-align: right;
+  margin-top: 0.4rem;
+  font-size: 0.7rem;
+  color: var(--accent-red);
 }
-.error-icon2 {
-  top: 26%;
-}
-.error-icon3 {
-  top: 47%;
-}
-.error-icon4 {
-  top: 68%;
-} */
 
 input::placeholder {
   font-size: 0.9rem;
@@ -287,19 +291,20 @@ button {
 }
 
 button:active,
+button:hover,
 button:focus {
   background-color: var(--primary-light-green);
-
+  outline: none;
   border: 0;
   border-bottom: 4px solid var(--primary-green);
 }
-.form-wrapper p {
+.ts {
   text-align: center;
   font-size: 0.7rem;
   font-weight: var(--fw-500);
   color: var(--primary-light-gray);
 }
-.form-wrapper p a {
+.ts a {
   color: var(--primary-red);
   font-weight: var(--fw-700);
   text-decoration: none;
