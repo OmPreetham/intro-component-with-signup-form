@@ -3,40 +3,88 @@ import { useState } from 'react'
 const SignUpForm = () => {
   // TODO: Add Validation functionality with React
 
+  const EMAIL_REGEX = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/
+  const PASSWORD_REGEX =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const [inputError, setInputError] = useState(false)
   const [firstNameError, setFirstNameError] = useState(false)
   const [lastNameError, setLastNameError] = useState(false)
   const [emailError, setEmailError] = useState(false)
   const [passwordError, setPasswordError] = useState(false)
 
-  const toggleFirstNameChange = (value) => {
-    setFirstName(value)
+  const [signUp, setSignUp] = useState(false)
+
+  const toggleFirstNameChange = (inputFirstName) => {
+    setFirstName(inputFirstName)
+    if (inputFirstName === '') {
+      setFirstNameError(true)
+      return
+    }
+    setFirstNameError(false)
   }
 
-  const toggleLastNameChange = (value) => {
-    setLastName(value)
+  const toggleLastNameChange = (inputLastName) => {
+    setLastName(inputLastName)
+    if (inputLastName === '') {
+      setLastNameError(true)
+      return
+    }
+    setLastNameError(false)
   }
 
-  const toggleEmailChange = (value) => {
-    setEmail(value)
+  const toggleEmailChange = (inputEmail) => {
+    setEmail(inputEmail)
+    if (inputEmail.match(EMAIL_REGEX)) {
+      setEmailError(false)
+      return
+    }
+    setEmailError(true)
   }
 
-  const togglePasswordChange = (value) => {
-    setPassword(value)
+  const togglePasswordChange = (inputPassword) => {
+    setPassword(inputPassword)
+    if (inputPassword.match(PASSWORD_REGEX)) {
+      setPasswordError(false)
+      return
+    }
+    setPasswordError(true)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (firstName === '') {
+    if (
+      firstName === '' ||
+      lastName === '' ||
+      !email.match(EMAIL_REGEX) ||
+      password === ''
+    ) {
+      if (firstName === '') {
+        setFirstNameError(true)
+      }
+      if (lastName === '') {
+        setLastNameError(true)
+      }
+      if (!email.match(EMAIL_REGEX)) {
+        setEmailError(true)
+      }
+      if (!password.match(PASSWORD_REGEX)) {
+        setPasswordError(true)
+      }
+    } else {
+      setFirstName('')
+      setLastName('')
+      setEmail('')
+      setPassword('')
+      setSignUp(true)
     }
   }
-
-  console.log(firstName, lastName, email, password)
 
   return (
     <div className="wrapper">
@@ -60,28 +108,33 @@ const SignUpForm = () => {
                 </p>
               </div>
               <div className="form-wrapper">
-                <form action="">
+                <form onSubmit={handleSubmit} action="">
                   <div className="firstname-wrapper">
                     <label className="firstname" htmlFor="firstname">
                       First Name
                     </label>
                     <input
                       onChange={(e) => toggleFirstNameChange(e.target.value)}
-                      className="firstname"
+                      className={firstNameError ? 'error' : 'no-error'}
                       type="text"
                       name="firstname"
                       value={firstName}
                       id="firstname"
                       placeholder="First Name"
                     />
-                    <img
-                      className="error-icon1"
-                      src="/images/icon-error.svg"
-                      alt="Error Icon"
-                    />
-                    <p>
-                      <i>First name cannot be empty</i>
-                    </p>
+
+                    {firstNameError && (
+                      <>
+                        <img
+                          className="error-icon1"
+                          src="/images/icon-error.svg"
+                          alt="Error Icon"
+                        />
+                        <p>
+                          <i>First name cannot be empty</i>
+                        </p>
+                      </>
+                    )}
                   </div>
                   <div className="lastname-wrapper">
                     <label className="lastname" htmlFor="lastname">
@@ -89,21 +142,25 @@ const SignUpForm = () => {
                     </label>
                     <input
                       onChange={(e) => toggleLastNameChange(e.target.value)}
-                      className="lastname"
+                      className={lastNameError ? 'error' : 'no-error'}
                       type="text"
                       name="lastname"
                       value={lastName}
                       id="lastname"
                       placeholder="Last Name"
                     />
-                    <img
-                      className="error-icon2"
-                      src="/images/icon-error.svg"
-                      alt="Error Icon"
-                    />
-                    <p>
-                      <i>Last Name cannot be empty</i>
-                    </p>
+                    {lastNameError && (
+                      <>
+                        <img
+                          className="error-icon1"
+                          src="/images/icon-error.svg"
+                          alt="Error Icon"
+                        />
+                        <p>
+                          <i>Last Name cannot be empty</i>
+                        </p>
+                      </>
+                    )}
                   </div>
                   <div className="email-wrapper">
                     <label className="email" htmlFor="email">
@@ -111,21 +168,26 @@ const SignUpForm = () => {
                     </label>
                     <input
                       onChange={(e) => toggleEmailChange(e.target.value)}
-                      className="email"
+                      className={emailError ? 'error-email error' : 'no-error'}
                       type="email"
                       name="email"
                       value={email}
                       id="email"
                       placeholder="Email Address"
                     />
-                    <img
-                      className="error-icon3"
-                      src="/images/icon-error.svg"
-                      alt="Error Icon"
-                    />
-                    <p>
-                      <i>Looks like this is not an email</i>
-                    </p>
+
+                    {emailError && (
+                      <>
+                        <img
+                          className="error-icon3"
+                          src="/images/icon-error.svg"
+                          alt="Error Icon"
+                        />
+                        <p>
+                          <i>Looks like this is not an email</i>
+                        </p>
+                      </>
+                    )}
                   </div>
                   <div className="password-wrapper">
                     <label className="password" htmlFor="password">
@@ -133,23 +195,36 @@ const SignUpForm = () => {
                     </label>
                     <input
                       onChange={(e) => togglePasswordChange(e.target.value)}
-                      className="password"
+                      className={passwordError ? 'error' : 'no-error'}
                       type="password"
                       name="password"
                       value={password}
                       id="password"
                       placeholder="Password"
                     />
-                    <img
-                      className="error-icon4"
-                      src="/images/icon-error.svg"
-                      alt="Error Icon"
-                    />
-                    <p>
-                      <i>Password cannot be empty</i>
-                    </p>
+                    {passwordError && (
+                      <>
+                        <img
+                          className="error-icon4"
+                          src="/images/icon-error.svg"
+                          alt="Error Icon"
+                        />
+                        <p>
+                          <i>
+                            The password must contain a mix of characters,
+                            minimum 8 characters.
+                          </i>
+                        </p>
+                      </>
+                    )}
                   </div>
                   <button type="submit">Claim your free trail</button>
+                  {signUp && (
+                    <p className="signup">
+                      Congrats, You've claimed free 7 days of coding then
+                      $20/mo. thereafter
+                    </p>
+                  )}
                 </form>
                 <p className="ts">
                   By clicking the button, you are agreeing to our{' '}

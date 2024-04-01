@@ -230,8 +230,7 @@ input {
   color: var(--neutral-dark-blue);
 }
 
-input:focus,
-input:active {
+.no-error {
   border: none;
   outline: 2px solid var(--accent-blue);
 }
@@ -251,11 +250,11 @@ input:active {
 .error-icon2,
 .error-icon3,
 .error-icon4 {
-  width: 5%;
+  width: 1.5rem;
 
   position: absolute;
-  right: 25px;
-  top: 16px;
+  top: 17px;
+  right: 50px;
 }
 
 form div p {
@@ -298,6 +297,12 @@ button:focus {
   border: 0;
   border-bottom: 4px solid var(--primary-green);
 }
+
+.signup {
+  text-align: center;
+  color: var(--neutral-dark-blue);
+}
+
 .ts {
   text-align: center;
   font-size: 0.7rem;
@@ -319,6 +324,8 @@ button:focus {
     margin-block: 4rem;
 
     gap: 4rem;
+
+    min-height: auto;
   }
 
   .form-wrapper {
