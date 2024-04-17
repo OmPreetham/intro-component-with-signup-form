@@ -127,7 +127,7 @@ const SignUpForm = () => {
                       <>
                         <img
                           className="error-icon1"
-                          src="/images/icon-error.svg"
+                          src="images/icon-error.svg"
                           alt="Error Icon"
                         />
                         <p>
@@ -153,7 +153,7 @@ const SignUpForm = () => {
                       <>
                         <img
                           className="error-icon1"
-                          src="/images/icon-error.svg"
+                          src="images/icon-error.svg"
                           alt="Error Icon"
                         />
                         <p>
@@ -180,7 +180,7 @@ const SignUpForm = () => {
                       <>
                         <img
                           className="error-icon3"
-                          src="/images/icon-error.svg"
+                          src="images/icon-error.svg"
                           alt="Error Icon"
                         />
                         <p>
@@ -206,7 +206,7 @@ const SignUpForm = () => {
                       <>
                         <img
                           className="error-icon4"
-                          src="/images/icon-error.svg"
+                          src="images/icon-error.svg"
                           alt="Error Icon"
                         />
                         <p>
